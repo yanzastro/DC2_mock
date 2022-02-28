@@ -55,16 +55,16 @@ gcr-catalogs](https://github.com/LSSTDESC/gcr-catalogs).Recommended column selec
  'convergence',
  'is_central',
  'mag_u_lsst',
- 'mag_r_lsst',
- 'mag_y_lsst',
  'mag_g_lsst',
+ 'mag_r_lsst',
  'mag_i_lsst',
  'mag_z_lsst',
- 'mag_r_sdss',
+ 'mag_y_lsst',
  'mag_u_sdss',
  'mag_g_sdss',
- 'mag_z_sdss',
- 'mag_i_sdss']]
+ 'mag_r_sdss',
+ 'mag_i_sdss',
+ 'mag_z_sdss']]
 ```
 
 The meaning of each column of cosmoDC2 catalog can be found from [Schema of GCR Catalogs as used in LSST DESC](https://github.com/LSSTDESC/gcr-catalogs/blob/master/GCRCatalogs/SCHEMA.md)
