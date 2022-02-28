@@ -1,0 +1,70 @@
+columns:
+  coordinates:
+    DEC: dec
+    RA: ra
+  magnitudes:
+  - mag_u_lsst
+  - mag_g_lsst
+  - mag_r_lsst
+  - mag_i_lsst
+  - mag_z_lsst
+  - mag_y_lsst
+  shapes:
+    size_major: size_true
+    size_minor: size_minor_true
+fields:
+  bounds:
+  - 40
+  - 60
+  - -60
+  - -20
+  grid:
+  - 20
+  - 22
+paths:
+  DATADIR: ${HOME}/DATA/mocks/cosmoDC2/LSST_10yr_mock
+  MOCKmasked: /DC2_shapes_halos_WL_masked.fits
+  MOCKout: /DC2_LSST.fits
+  MOCKoutfull: /DC2_all.fits
+  MOCKraw: ${HOME}/DATA/mocks/cosmoDC2/cosmodc2_smallsample_magcut_sparse.fits
+  realdata: ${HOME}/DATA/mocks/KV450/KiDS_VIKING/KV450_north.cat
+photometric_setup:
+  MAGlims:
+  - 26.0374014480827
+  - 27.29469867039545
+  - 27.31270169467983
+  - 26.868862973183287
+  - 26.22934045752097
+  - 25.299990902598516
+  MAGsig: 1.1
+  PSFs:
+  - 0.77
+  - 0.73
+  - 0.7
+  - 0.67
+  - 0.65
+  - 0.63
+  scale: 2.5
+  select_rules:
+  - M_0 ll 90.0
+  - recal_weight gg -100
+  sn_detect: 1.0
+photoz_setup:
+  prior: NGVS
+  prior_filter: mag_i_lsst
+  templates: CWWSB_capak
+  z_max: 3
+  z_min: 0.06674
+survey: LSST
+threads: 20
+weight_assignment:
+  real_mag_col:
+  - MAG_GAAP_u
+  - MAG_GAAP_g
+  - MAG_GAAP_r
+  - MAG_GAAP_i
+  - MAG_GAAP_Z
+  - MAG_GAAP_Y
+  real_weight_col: weight
+  real_weight_file: ${HOME}/DATA/mocks/KV450/recal_weights.fits
+  tree: ${HOME}/DATA/mocks/KV450/dc2_recal_weights.tree.pickle

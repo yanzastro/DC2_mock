@@ -1,0 +1,60 @@
+survey: 'KV450'
+threads: 20
+
+paths:
+    DATADIR: '${HOME}/DATA/mocks/cosmoDC2/KV450_mock'    # need to + survey to customize
+    MOCKraw: '${HOME}/DATA/mocks/cosmoDC2/cosmodc2_smallsample_magcut_sparse.fits'
+    MOCKmasked: '/DC2_shapes_halos_WL_masked.fits'
+    MOCKoutfull: '/DC2_all.fits'
+    MOCKout: '/DC2_KV450.fits'
+    realdata: '${HOME}/DATA/mocks/KV450/KiDS_VIKING/KV450_north.cat'
+    
+fields:
+    bounds: [40, 60, -60, -20]
+    grid: [20, 22]
+    
+columns:
+    coordinates:
+        RA: ra
+        DEC: dec
+    magnitudes:
+        ['mag_u_lsst',
+         'mag_g_lsst',
+         'mag_r_lsst',
+         'mag_i_lsst',
+         'mag_z_lsst',
+         'mag_y_lsst']
+    shapes:
+        size_minor: size_minor_true
+        size_major: size_true
+        
+photometric_setup:
+    PSFs: [1.0,  0.9,  0.7,  0.8,  1.0,  1.0]
+    MAGlims: [25.5, 26.3, 26.2, 24.9, 24.9, 24.1]
+    MAGsig: 1.1  # the original value is 1.0, however a slightly larger values
+            # yields smaller photometric uncertainties and a better match in
+            # the spec-z vs phot-z distribution between data and mocks
+    scale: 2.5
+    sn_detect: 1.0
+    select_rules: ["M_0 ll 90.0", "recal_weight gg -100"]    
+
+photoz_setup:
+    z_min: 0.06674 
+    z_max: 3
+    templates: 'CWWSB_capak' 
+    prior: 'NGVS' 
+    prior_filter: 'mag_i_lsst'   # need to + '_obs'
+
+    
+weight_assignment:
+    real_weight_col: 'weight'
+    real_weight_file: '${HOME}/DATA/mocks/KV450/recal_weights.fits'
+    real_mag_col: [MAG_GAAP_u,
+                   MAG_GAAP_g,
+                   MAG_GAAP_r,
+                   MAG_GAAP_i,
+                   MAG_GAAP_Z,
+                   MAG_GAAP_Y,]
+    tree: '${HOME}/DATA/mocks/KV450/dc2_recal_weights.tree.pickle'
+    
+
